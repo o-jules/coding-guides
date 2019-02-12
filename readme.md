@@ -44,47 +44,85 @@
 
 - [强制] 全局常量使用全大写字母加下划线分隔
 
-```ts
-/* some global scope */
+  ```ts
+  /* some global scope */
 
-// good
-const BASE_URL = ''
+  // good
+  const BASE_URL = ''
 
-// bad
-const baseUrl = ''
-```
+  // bad
+  const baseUrl = ''
+  ```
 
-- [强制] 变量名、函数名、方法名使用小驼峰命名法
+- [强制] 变量名、函数名、属性名、方法名使用小驼峰命名法
 
-```ts
-let userIndex = 0
+  ```ts
+  // good
+  let userName = 'julia'
+  // bad
+  let user_name = 'john'
 
-function doSomething()｛}
+  // good
+  function doSomething()｛}
+  // bad
+  function do_Something() {}
 
-class Dog {
-  bark() {}
-}
-```
+  // good
+  class Dog {
+    name: string
+    bark() {}
+  }
 
-- [强制] 类名使用 Pascal 命名法（大驼峰命名法）
+  class Cat {
+    Name: string // bad
+    Bark() {} //bad
+  }
+  ```
 
-```ts
-// good
-let userName = 'julia'
+- [强制] 类名、Type名、接口名、枚举名使用 Pascal 命名法（大驼峰命名法）
 
-// bad
-let user_name = 'john'
-```
+  ```ts
+  // good
+  class Dog {}
 
-- React 组件名使用 Pacal 命名法
+  // bad
+  class cat {}
 
-```bash
-# good
-ArticleDetail.tsx
+  // good
+  interface LanguageServer {}
+  // bad
+  interface languageServer {}
 
-# bad
-articleDetail.tsx
-```
+  // good
+  type DisplayProp = 'none' | 'block' | 'flex'
+  // bad
+  type displayProp = 'none' | 'block' | 'flex'
+
+  enum YesNo {
+    yes = 1,
+    no = 0
+  }
+  ```
+
+- 路径（文件夹），文件名采用 kebab-case
+
+  ```bash
+  # good
+  article-edit
+
+  # bad
+  article_edit
+  ```
+
+  例外，React 组件名使用 Pacal 命名法：
+
+  ```bash
+  # good
+  ArticleDetail.tsx
+
+  # bad
+  articleDetail.tsx
+  ```
 
 ### 语句规范
 
@@ -100,6 +138,8 @@ articleDetail.tsx
   ```
 
 ### 语义规范
+
+- [] `null` 与 `undefined`
 
 - [推荐] 不同逻辑的代码，使用空行进行分隔
 
