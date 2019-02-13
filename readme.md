@@ -1,6 +1,4 @@
-# 前端代码规范
-
-## JavaScript / Typescript 代码规范
+## Typescript 代码规范
 
 ### 基础
 
@@ -41,6 +39,21 @@
   ```
 
 ### 命名规范
+
+- [推荐] 名字尽量使用英文，且不应使用缩写；常见的惯例除外
+  ```ts
+  // good
+  let i = 0, j = 0, k = 0 // 临时变量惯例
+
+  class Animal {}
+  class Cat {}
+  class Dog {}
+
+  // bad
+  class Mao {}
+  class Neko {}
+  class Goyangi {}
+  ```
 
 - [强制] 全局常量使用全大写字母加下划线分隔
 
@@ -104,7 +117,8 @@
   }
   ```
 
-- 路径（文件夹），文件名采用 kebab-case
+
+- [强制] 路径（文件夹），文件名采用 kebab-case
 
   ```bash
   # good
@@ -114,19 +128,9 @@
   article_edit
   ```
 
-  例外，React 组件名使用 Pacal 命名法：
-
-  ```bash
-  # good
-  ArticleDetail.tsx
-
-  # bad
-  articleDetail.tsx
-  ```
-
 ### 语句规范
 
-- [强制] `if` / `else` / `for` / `while` 等语句主体需换行且不能省略 `{}`
+- [强制] `if` / `else` / `for` / `do` / `while` 等控制语句主体需换行且不能省略 `{}`
   ```ts
   if (good) {
     doSomething()
@@ -139,11 +143,28 @@
 
 ### 语义规范
 
-- [] `null` 与 `undefined`
+- [推荐] `null` 与 `undefined`
 
-- [推荐] 不同逻辑的代码，使用空行进行分隔
+  TODO: 具体细节需要进一步讨论
+
+- [推荐] 同一区块内的不同逻辑的代码，使用空行进行分隔
 
 - [推荐] 函数、方法等代码不要宜太长，功能尽量简单
+
+- [强制] 模块使用 ES 模块
+
+- [强制] 模块导出的函数独立定义，方便打包工具进行 Tree-Shaking 优化
+  ```ts
+  // good
+  export function format() {}
+  export function validate() {}
+
+  // bad
+  export default {
+    format() {},
+    validate() {}
+  }
+  ```
 
 - [强制] 外部依赖的导入顺序，遵循从外到内，从远到近的原则
 
@@ -165,11 +186,3 @@
   import { DeleteDialog } from '@/components/dialog'
   import { isDeletable } from './utils'
   ```
-
-## Typescript 规范
-
-## 代码格式化工具
-
-推荐团队成员都使用同样的格式化工具及配置，以保证相同的代码格式化的结果是一致的。
-
-- Visual Studio Code + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
