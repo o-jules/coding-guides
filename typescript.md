@@ -186,3 +186,12 @@
   import { DeleteDialog } from '@/components/dialog'
   import { isDeletable } from './utils'
   ```
+
+## 功能规范
+
+- 禁止改写宿主内置对象
+
+```ts
+// bad
+Array.prototype.someCoolMethod = function() {}
+```
