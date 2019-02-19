@@ -189,9 +189,15 @@
 
 ## 功能规范
 
-- 禁止改写宿主内置对象
+- [强制] 禁止改写宿主内置对象
 
 ```ts
 // bad
 Array.prototype.someCoolMethod = function() {}
 ```
+
+- [强制] 变量比较使用 `===` 和 `!==`，禁止使用 `==` 和 `!=`
+
+- [强制] 使用 `Math.isNaN`，禁止全局方法 `isNaN`
+
+- [强制] 使用 `Math.isFinite`，禁止使用全局方法 `isFinite`
